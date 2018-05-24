@@ -4,7 +4,7 @@
 в virtualbox нужно сделать проброс портов 8081 и 8083 и 2222 на виртуалку ???????
 
 #1 
-если нужно собрать билд с нуля, делаем это командой docker build -t smartnarod .
+если нужно собрать билд с нуля, делаем это командой docker build -t project_name .
 но проще, слить готовый билд с хаба
 
     docker pull chepil/rna
@@ -13,7 +13,7 @@
 допустим, что наша папка, с проектом, которая будет внутри /app лежит на локальной машине, в папке /Users/chepil/development/beauit/smart-narod-mobile-app
 Нужно ее синхронизировать с app, для этого используем --mount 
 
-    export APP_FOLDER="/Users/chepil/development/beauit/smart-narod-mobile-app"
+    export APP_FOLDER="/Users/chepil/development/company/project-name-mobile-app"
 
 #2 
 запускаем докер контейнер
@@ -21,7 +21,7 @@
     docker run -d -it --privileged --net=host \
         --hostname sn --name sn \
 	    --mount type=bind,source=$APP_FOLDER,target=/app \
-	    smartnarod 
+	    chepil/rna 
 	
 
 #
