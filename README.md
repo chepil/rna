@@ -23,6 +23,14 @@
 	    --mount type=bind,source=$APP_FOLDER,target=/app \
 	    chepil/rna 
 	
+иногда, в случае использования синего кита, можно заменить --net=host на указание конкретных портов, 
+которые необходимо открыть. Например заменить --net=host на строку "-p 2222:2222 -p 8081:8081 -p 8083:8083"
+Таким образом, контейнер нужно запускать по другому, например вот так -
+
+    docker run -d -it --privileged -p 2222:2222 -p 8081:8081 -p 8083:8083 \
+        --hostname sn --name sn \
+            --mount type=bind,source=$APP_FOLDER,target=/app \
+            chepil/rna
 
 #
 создаем внутри докера дирректорию для ssh и копируем в нее свой id_rsa.pub ключ, чтобы иметь доступ по ssh (если у вас нет файла /Users/user/.ssh/id_rsa.pub на хост машине, нужно запустить ssh-keygen) 
